@@ -1,7 +1,7 @@
 // modules/Map.js
 import React from 'react'
 import { Link } from 'react-router'
-import * as esriLoader from '../node_modules/esri-loader/dist';
+import * as esriLoader from 'esri-loader';
 
 export default React.createClass({
   render() {
