@@ -4,8 +4,6 @@ import { Link } from 'react-router'
 import * as esriLoader from '../node_modules/esri-loader/dist';
 
 export default React.createClass({
-  // componentWillMount() {
-  // },
   render() {
     return <div><ul role="nav">
         <li><Link to="/">Home</Link></li>
@@ -17,17 +15,18 @@ export default React.createClass({
   componentDidMount() {
     if (!esriLoader.isLoaded()) {
       // lazy load the arcgis api
-      const options = {
-        // use a specific version instead of latest 4.x
-        url: '//js.arcgis.com/3.18/'
-      };
-      esriLoader.bootstrap((err) => {
+      const onLoad = (err) => {
         if (err) {
           console.error(err)
         }
         // once it's loaded, create the map
         this._createMap()
-      }, options)
+      };
+      const options = {
+        // use a specific version instead of latest 4.x
+        url: '//js.arcgis.com/3.18/'
+      };
+      esriLoader.bootstrap(onLoad, options)
     } else {
       // arcgis api is already loaded, just create the map
       this._createMap()

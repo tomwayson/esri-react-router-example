@@ -1,17 +1,50 @@
 # esri-react-router-example
-Example of how to use the ArcGIS API for JavaScript with react-router
+Example of how to use [esri-loader](https://github.com/tomwayson/esri-loader) to lazy load the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) in a [react-router](https://github.com/reactjs/react-router-tutorial) application.
 
-## Setting up the Project
+The ArcGIS API is not loaded until the user navigates to the `/map` route. On that route, the `<Map>` component loads the ArcGIS API using `esriLoader.bootstrap()`:
+```js
+componentDidMount() {
+  if (!esriLoader.isLoaded()) {
+    // lazy load the arcgis api
+    const onLoad = (err) => {
+      if (err) {
+        console.error(err)
+      }
+      // once it's loaded, create the map
+      this._createMap()
+    };
+    const options = {
+      // use a specific version instead of latest 4.x
+      url: '//js.arcgis.com/3.18/'
+    };
+    esriLoader.bootstrap(onLoad, options)
+  } else {
+    // arcgis api is already loaded, just create the map
+    this._createMap()
+  }
+},
+```
 
+Once the ArcGIS API is loaded on the page, the component loads the [esri/map](https://developers.arcgis.com/javascript/3/jsapi/map-amd.html) module using `esriLoader.dojoRequire()` and then finally renders a map:
+```js
+_createMap() {
+  // require the map class
+  esriLoader.dojoRequire(['esri/map'], (Map) => {
+    // create a map at in this component
+    this._map = new Map(this.refs.map, {
+      center: [-118, 34.5],
+      zoom: 8,
+      basemap: 'dark-gray'
+    })
+  })
+}
+```
+
+## Development Instructions
 First you'll need [Node.js](https://nodejs.org) and the package manager
 that comes with it: [npm](https://www.npmjs.com/).
 
-Once you've got that working, head to the command line where we'll set
-up our project.
-
-## Clone the Tutorial
-
-```
+```bash
 git clone https://github.com/tomwayson/esri-react-router-example
 cd esri-react-router-example
 npm install
