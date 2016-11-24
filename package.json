@@ -4,7 +4,8 @@
   "description": "Example of how to use the ArcGIS API for JavaScript with react-router",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base ."
+    "start": "webpack-dev-server --inline --content-base .",
+    "build": "webpack && cp index.html dist/index.html"
   },
   "author": "Tom Wayson <tom@tomwayson.com> (https://tomwayson.com)",
   "license": "Apache-2.0",
