@@ -5,7 +5,7 @@ import * as esriLoader from 'esri-loader';
 
 export default React.createClass({
   render() {
-    return <div ref="map" style={{height: '600px'}}></div>
+    return <div ref="map" style={{height: 'calc(100vh - 50px)'}}></div>
   },
   componentDidMount() {
     if (!esriLoader.isLoaded()) {
