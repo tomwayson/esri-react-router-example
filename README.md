@@ -1,6 +1,9 @@
 # esri-react-router-example
 Example of how to use [esri-loader](https://github.com/tomwayson/esri-loader) to lazy load the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) in a [react-router](https://github.com/reactjs/react-router-tutorial) application.
 
+[View it live](https://tomwayson.github.io/esri-react-router-example)
+
+## How it works
 The ArcGIS API is not loaded until the user navigates to the `/map` route. On that route, the `<Map>` component loads the ArcGIS API using `esriLoader.bootstrap()`:
 ```js
 componentDidMount() {
@@ -40,7 +43,7 @@ _createMap() {
 }
 ```
 
-## Development Instructions
+## Development instructions
 First you'll need [Node.js](https://nodejs.org) and the package manager
 that comes with it: [npm](https://www.npmjs.com/).
 
