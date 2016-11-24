@@ -9,7 +9,7 @@
   "author": "Tom Wayson <tom@tomwayson.com> (https://tomwayson.com)",
   "license": "Apache-2.0",
   "dependencies": {
-    "esri-loader": "^0.1.0",
+    "esri-loader": "^0.1.2",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0"
