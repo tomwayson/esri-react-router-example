@@ -15,7 +15,7 @@ componentDidMount() {
     };
     const options = {
       // use a specific version instead of latest 4.x
-      url: '//js.arcgis.com/3.18/'
+      url: '//js.arcgis.com/3.18compact/'
     };
     esriLoader.bootstrap(onLoad, options)
   } else {
