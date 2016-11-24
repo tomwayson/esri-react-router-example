@@ -5,12 +5,7 @@ import * as esriLoader from 'esri-loader';
 
 export default React.createClass({
   render() {
-    return <div><ul role="nav">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/map">Map</Link></li>
-      </ul>
-      <div ref="map" style={{height: '600px'}}></div>
-    </div>
+    return <div ref="map" style={{height: '600px'}}></div>
   },
   componentDidMount() {
     if (!esriLoader.isLoaded()) {
