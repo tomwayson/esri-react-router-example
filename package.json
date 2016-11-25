@@ -1,6 +1,6 @@
 {
   "name": "esri-react-router-example",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Example of how to use the ArcGIS API for JavaScript with react-router",
   "main": "index.js",
   "scripts": {
