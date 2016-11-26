@@ -8,6 +8,8 @@
 <!-- the ArcGIS API CSS is required for the map to work -->
 <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
 <style>
+  /* NOTE: ordinarily would require css files from components,
+  but for simplicity's sake just inlining */
   /* bootstrap overrides */
   .nav.no-collapse li {
     float: left;
@@ -18,12 +20,16 @@
   }
   .loading {
     width: 90px;
-    margin: 0 auto;
+    position: absolute;
     padding: 10px;
     text-align: center;
     font-size: 1.1em;
     border: 1px solid #555;
     color: #555;
+    top: 100px;
+    left: calc(50% - 45px);
+    z-index: 1000;
+    background-color: #fff;
   }
 </style>
 <div id=app></div>

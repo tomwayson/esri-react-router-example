@@ -6,7 +6,7 @@ Example of how to use [esri-loader](https://github.com/tomwayson/esri-loader) to
 ## How it works
 The ArcGIS API is not loaded until the user navigates to the `/map` route. On that route, the `<Map>` component loads the ArcGIS API using `esriLoader.bootstrap()`:
 ```js
-componentDidMount() {
+componentDidMount () {
   if (!esriLoader.isLoaded()) {
     // lazy load the arcgis api
     const options = {
@@ -17,14 +17,10 @@ componentDidMount() {
       if (err) {
         console.error(err)
       }
-      // hide the loading indicator and show the map
-      this.setState({
-        loaded: true
-      })
       this._createMap()
     }, options)
   } else {
-    // ArcGIS api is already loaded, just create the map
+    // arcgis api is already loaded, just create the map
     this._createMap()
   }
 },

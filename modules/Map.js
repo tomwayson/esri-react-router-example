@@ -5,19 +5,21 @@ import * as esriLoader from 'esri-loader'
 export default React.createClass({
   getInitialState () {
     // set up state to track when the arcgis api gets loaded
-    return { loaded: esriLoader.isLoaded() }
+    return { mapLoaded: false }
   },
   render () {
-    if (this.state.loaded) {
-      // set up the map DOM
-      return <div ref="map" style={{height: 'calc(100vh - 50px)'}}></div>
-    } else {
-      // show the loading indicator
-      return <div className="loading">Loading...</div>
+    // show a loading indicator until the map is loaded
+    const loadingStyle = {
+      display: this.state.mapLoaded ? 'none' : 'block'
     }
+    // set up the DOM to attach the map to
+    return <div>
+      <div ref="map" style={{height: 'calc(100vh - 50px)'}}></div>
+      <div className="loading" style={loadingStyle}>Loading...</div>
+    </div>
   },
   componentDidMount () {
-    if (!this.state.loaded) {
+    if (!esriLoader.isLoaded()) {
       // lazy load the arcgis api
       const options = {
         // use a specific version instead of latest 4.x
@@ -27,10 +29,6 @@ export default React.createClass({
         if (err) {
           console.error(err)
         }
-        // hide the loading indicator and show the map
-        this.setState({
-          loaded: true
-        })
         this._createMap()
       }, options)
     } else {
@@ -46,6 +44,13 @@ export default React.createClass({
         center: [-118, 34.5],
         zoom: 8,
         basemap: 'dark-gray'
+      })
+      this._map.on('load', () => {
+        // hide the loading indicator
+        // NOTE: this will trigger a rerender
+        this.setState({
+          mapLoaded: true
+        })
       })
     })
   }

@@ -2,9 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## 0.3.0
 ### Added
 - add loading indicator to map route until map is loaded
+### Fixed
+- build should minify output
 
 ## 0.2.0
 ### Added
