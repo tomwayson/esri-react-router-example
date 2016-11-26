@@ -9,20 +9,22 @@ The ArcGIS API is not loaded until the user navigates to the `/map` route. On th
 componentDidMount() {
   if (!esriLoader.isLoaded()) {
     // lazy load the arcgis api
-    const onLoad = (err) => {
-      if (err) {
-        console.error(err)
-      }
-      // once it's loaded, create the map
-      this._createMap()
-    };
     const options = {
       // use a specific version instead of latest 4.x
       url: '//js.arcgis.com/3.18compact/'
-    };
-    esriLoader.bootstrap(onLoad, options)
+    }
+    esriLoader.bootstrap((err) => {
+      if (err) {
+        console.error(err)
+      }
+      // hide the loading indicator and show the map
+      this.setState({
+        loaded: true
+      })
+      this._createMap()
+    }, options)
   } else {
-    // arcgis api is already loaded, just create the map
+    // ArcGIS api is already loaded, just create the map
     this._createMap()
   }
 },
@@ -30,10 +32,10 @@ componentDidMount() {
 
 Once the ArcGIS API is loaded on the page, the component loads the [esri/map](https://developers.arcgis.com/javascript/3/jsapi/map-amd.html) module using `esriLoader.dojoRequire()` and then finally renders a map:
 ```js
-_createMap() {
+_createMap () {
   // require the map class
   esriLoader.dojoRequire(['esri/map'], (Map) => {
-    // create a map at in this component
+    // create a map at a DOM node in this component
     this._map = new Map(this.refs.map, {
       center: [-118, 34.5],
       zoom: 8,
