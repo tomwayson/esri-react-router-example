@@ -17,6 +17,7 @@ componentDidMount () {
       if (err) {
         console.error(err)
       }
+      // now that the arcgis api has loaded, we can create the map
       this._createMap()
     }, options)
   } else {
@@ -26,16 +27,23 @@ componentDidMount () {
 },
 ```
 
-Once the ArcGIS API is loaded on the page, the component loads the [esri/map](https://developers.arcgis.com/javascript/3/jsapi/map-amd.html) module using `esriLoader.dojoRequire()` and then finally renders a map:
+Once the ArcGIS API is loaded on the page, the component loads the [esri/arcgis/util](https://developers.arcgis.com/javascript/3/jsapi/esri.arcgis.utils-amd.html) module using `esriLoader.dojoRequire()` and then finally renders a map:
 ```js
 _createMap () {
+  // get item id from route params or use default
+  const itemId = this.props.params.itemId || '8e42e164d4174da09f61fe0d3f206641'
   // require the map class
-  esriLoader.dojoRequire(['esri/map'], (Map) => {
+  esriLoader.dojoRequire(['esri/arcgis/utils'], (arcgisUtils) => {
     // create a map at a DOM node in this component
-    this._map = new Map(this.refs.map, {
-      center: [-118, 34.5],
-      zoom: 8,
-      basemap: 'dark-gray'
+    arcgisUtils.createMap(itemId, this.refs.map)
+    .then((response) => {
+      // hide the loading indicator
+      // and show the map title
+      // NOTE: this will trigger a rerender
+      this.setState({
+        mapLoaded: true,
+        item: response.itemInfo.item
+      })
     })
   })
 }
