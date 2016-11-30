@@ -14,6 +14,7 @@ export default React.createClass({
     }
     // set up the DOM to attach the map to
     return <div>
+      <div className='map-title'>{this.state.title}</div>
       <div ref='map' style={{height: 'calc(100vh - 50px)'}} />
       <div className='loading' style={loadingStyle}>Loading...</div>
     </div>
@@ -44,12 +45,11 @@ export default React.createClass({
       // create a map at a DOM node in this component
       arcgisUtils.createMap(itemId, this.refs.map)
       .then((response) => {
-        // this isn't really needed
-        this._map = response.map
         // hide the loading indicator
         // NOTE: this will trigger a rerender
         this.setState({
-          mapLoaded: true
+          mapLoaded: true,
+          title: response.itemInfo.item.title
         })
       })
     })
