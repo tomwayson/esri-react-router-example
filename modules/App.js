@@ -4,21 +4,21 @@ import React from 'react'
 import NavLinkItem from './NavLinkItem'
 
 export default React.createClass({
-  render() {
-    const currentPathname = this.props.location.pathname;
+  render () {
+    const currentPathname = this.props.location.pathname
     return <div>
-    <nav className="navbar navbar-default navbar-static-top">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <a className="navbar-brand hidden-xs">Esri React Router Example</a>
+      <nav className='navbar navbar-default navbar-static-top'>
+        <div className='container-fluid'>
+          <div className='navbar-header'>
+            <a className='navbar-brand hidden-xs'>Esri React Router Example</a>
+          </div>
+          <ul className='nav navbar-nav no-collapse' role='nav'>
+            <NavLinkItem to='/' currentPathname={currentPathname}>Home</NavLinkItem>
+            <NavLinkItem to='/map' currentPathname={currentPathname}>Map</NavLinkItem>
+          </ul>
         </div>
-        <ul className="nav navbar-nav no-collapse" role="nav">
-          <NavLinkItem to="/" currentPathname={currentPathname}>Home</NavLinkItem>
-          <NavLinkItem to="/map" currentPathname={currentPathname}>Map</NavLinkItem>
-        </ul>
-      </div>
-    </nav>
-    {this.props.children}
+      </nav>
+      { this.props.children }
     </div>
   }
 })

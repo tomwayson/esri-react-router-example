@@ -8,9 +8,9 @@ import Map from './modules/Map'
 
 render((
   <Router history={hashHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home}/>
-      <Route path="/map" component={Map}/>
+    <Route path='/' component={App}>
+      <IndexRoute component={Home} />
+      <Route path='/map(/:itemId)' component={Map} />
     </Route>
   </Router>
 ), document.getElementById('app'))

@@ -14,8 +14,8 @@ export default React.createClass({
     }
     // set up the DOM to attach the map to
     return <div>
-      <div ref="map" style={{height: 'calc(100vh - 50px)'}}></div>
-      <div className="loading" style={loadingStyle}>Loading...</div>
+      <div ref='map' style={{height: 'calc(100vh - 50px)'}} />
+      <div className='loading' style={loadingStyle}>Loading...</div>
     </div>
   },
   componentDidMount () {
@@ -37,15 +37,15 @@ export default React.createClass({
     }
   },
   _createMap () {
+    // get item id from route params or use default
+    const itemId = this.props.params.itemId || '8e42e164d4174da09f61fe0d3f206641'
     // require the map class
-    esriLoader.dojoRequire(['esri/map'], (Map) => {
+    esriLoader.dojoRequire(['esri/arcgis/utils'], (arcgisUtils) => {
       // create a map at a DOM node in this component
-      this._map = new Map(this.refs.map, {
-        center: [-118, 34.5],
-        zoom: 8,
-        basemap: 'dark-gray'
-      })
-      this._map.on('load', () => {
+      arcgisUtils.createMap(itemId, this.refs.map)
+      .then((response) => {
+        // this isn't really needed
+        this._map = response.map
         // hide the loading indicator
         // NOTE: this will trigger a rerender
         this.setState({
