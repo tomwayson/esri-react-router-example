@@ -4,6 +4,7 @@
   "description": "Example of how to use the ArcGIS API for JavaScript with react-router",
   "main": "index.js",
   "scripts": {
+    "test": "standard",
     "start": "webpack-dev-server --inline --content-base .",
     "build": "webpack -p && cp index.html dist/index.html",
     "deploy": "gh-pages-deploy",
@@ -25,6 +26,7 @@
     "gh-pages-deploy": "^0.4.2",
     "http-server": "^0.8.5",
     "rimraf": "^2.5.4",
+    "standard": "^8.6.0",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
   },

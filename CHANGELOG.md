@@ -2,9 +2,19 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.4.0
+### Added
+- map route shows a web map based on id passed in as route parameter
+- add list of a few links to maps on the home route
+- add link from map title to item detail page
+
+### Support
+- lint using standard
+
 ## 0.3.0
 ### Added
 - add loading indicator to map route until map is loaded
+
 ### Fixed
 - build should minify output
 
