@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - map route shows a web map based on id passed in as route parameter
 - add list of a few links to maps on the home route
+- add link from map title to item detail page
 
 ### Support
 - lint using standard

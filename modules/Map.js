@@ -8,13 +8,20 @@ export default React.createClass({
     return { mapLoaded: false }
   },
   render () {
+    const item = this.state.item
+    const title = item && item.title
+    const link = item ? `https://www.arcgis.com/home/item.html?id=${item.id}` : 'javascript:void(0)'
     // show a loading indicator until the map is loaded
     const loadingStyle = {
       display: this.state.mapLoaded ? 'none' : 'block'
     }
+    // show the map title
+    const titleStyle = {
+      display: title ? 'block' : 'none'
+    }
     // set up the DOM to attach the map to
     return <div>
-      <div className='map-title'>{this.state.title}</div>
+      <div className='map-title' style={titleStyle}><a href={link}>{title}</a></div>
       <div ref='map' style={{height: 'calc(100vh - 50px)'}} />
       <div className='loading' style={loadingStyle}>Loading...</div>
     </div>
@@ -30,6 +37,7 @@ export default React.createClass({
         if (err) {
           console.error(err)
         }
+        // now that the arcgis api has loaded, we can create the map
         this._createMap()
       }, options)
     } else {
@@ -46,10 +54,11 @@ export default React.createClass({
       arcgisUtils.createMap(itemId, this.refs.map)
       .then((response) => {
         // hide the loading indicator
+        // and show the map title
         // NOTE: this will trigger a rerender
         this.setState({
           mapLoaded: true,
-          title: response.itemInfo.item.title
+          item: response.itemInfo.item
         })
       })
     })
