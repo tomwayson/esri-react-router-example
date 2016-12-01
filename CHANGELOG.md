@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.5.0
+### Added
+- home route allows user to enter their own map id
+
 ## 0.4.0
 ### Added
 - map route shows a web map based on id passed in as route parameter
