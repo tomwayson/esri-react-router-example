@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.7.0
+### Added
+- add ability to search by term
+
 ## 0.6.0
 ### Added
 - add maps route. currently shows "top 10" webmaps

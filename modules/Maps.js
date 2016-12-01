@@ -1,32 +1,29 @@
 /* global fetch */
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, hashHistory } from 'react-router'
 
 export default React.createClass({
-
   getInitialState () {
     // set up state to track AGO search results
     return { items: [] }
   },
-
-  // // pull item id from form and navigate directly to that map
-  // handleSubmit (event) {
-  //   event.preventDefault()
-  //   const itemId = event.target.elements[0].value
-  //   const path = `/maps/${itemId}`
-  //   hashHistory.push(path)
-  // },
-
-  componentWillMount () {
-    this._loadData()
+  // search arcgis online for maps
+  handleSubmit (event) {
+    event.preventDefault()
+    const searchTerm = event.target.elements[0].value
+    const path = `/maps/?q=${searchTerm}`
+    hashHistory.push(path)
   },
-  _loadData () {
-    const url = `http://www.arcgis.com/sharing/rest/search?num=10&start=0&sortField=avgRating&sortOrder=desc&q=type%3A%20%22Web%20Map%22 -type:"Web Mapping Application"&f=json`
+  componentWillMount () {
+    this._loadData(this._getQuery(this.props))
+  },
+  _loadData (query) {
+    const q = query && query.q
+    const url = `http://www.arcgis.com/sharing/rest/search?num=10&start=0&sortField=avgRating&sortOrder=desc&q=(${q}) type%3A%20%22Web%20Map%22 -type:"Web Mapping Application"&f=json`
     fetch(url)
     .then((response) => {
       return response.json()
     }).then((json) => {
-      console.log('parsed json', json)
       this.setState({
         items: json.results
       })
@@ -46,11 +43,23 @@ export default React.createClass({
       </li>
     })
     return <div className='container'>
+      <form className='form-group' onSubmit={this.handleSubmit}>
+        <input type='text' placeholder='bike' className='form-control form-inline' defaultValue={this.props.location.query.q} /> {' '}
+        <button type='submit' className='btn btn-primary'>Go</button>
+      </form>
       <p>Showing top 10 web maps</p>
       <ul className='list-results'>{ listItems }</ul>
     </div>
   },
   componentWillReceiveProps (nextProps) {
-    console.log('nextProps', nextProps)
+    const query = this._getQuery(this.props)
+    const nextQuery = this._getQuery(nextProps)
+    if ((query && query.q) !== (nextQuery && nextQuery.q)) {
+      // search term was updated, re-run query
+      this._loadData(nextQuery)
+    }
+  },
+  _getQuery (props) {
+    return props.location && props.location.query
   }
 })
