@@ -1,5 +1,6 @@
 // modules/Map.js
 import React from 'react'
+import { hashHistory } from 'react-router'
 import * as esriLoader from 'esri-loader'
 
 export default React.createClass({
@@ -8,6 +9,15 @@ export default React.createClass({
     return { mapLoaded: false }
   },
   render () {
+    // show any map errors
+    const error = this.state.error
+    if (error) {
+      return <div className='container'>
+        <div className='alert alert-danger alert-map'>{error}</div>
+        <button className='btn btn-default' onClick={hashHistory.goBack}>Go back</button>
+      </div>
+    }
+    // otherwise, show map
     const item = this.state.item
     const title = item && item.title
     const link = item ? `https://www.arcgis.com/home/item.html?id=${item.id}` : 'javascript:void(0)'
@@ -59,6 +69,11 @@ export default React.createClass({
         this.setState({
           mapLoaded: true,
           item: response.itemInfo.item
+        })
+      }, (err) => {
+        this.setState({
+          mapLoaded: true,
+          error: err.message || err
         })
       })
     })
