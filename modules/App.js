@@ -14,7 +14,7 @@ export default React.createClass({
           </div>
           <ul className='nav navbar-nav no-collapse' role='nav'>
             <NavLinkItem to='/' currentPathname={currentPathname}>Home</NavLinkItem>
-            <NavLinkItem to='/map' currentPathname={currentPathname}>Map</NavLinkItem>
+            <NavLinkItem to='/maps' currentPathname={currentPathname}>Maps</NavLinkItem>
           </ul>
         </div>
       </nav>
