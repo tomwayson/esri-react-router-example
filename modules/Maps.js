@@ -19,7 +19,7 @@ export default React.createClass({
   },
   _loadData (query) {
     const q = query && query.q
-    const url = `http://www.arcgis.com/sharing/rest/search?num=10&start=0&sortField=avgRating&sortOrder=desc&q=(${q}) type%3A%20%22Web%20Map%22 -type:"Web Mapping Application"&f=json`
+    const url = `//www.arcgis.com/sharing/rest/search?num=10&start=0&sortField=avgRating&sortOrder=desc&q=(${q}) type%3A%20%22Web%20Map%22 -type:"Web Mapping Application"&f=json`
     fetch(url)
     .then((response) => {
       return response.json()
