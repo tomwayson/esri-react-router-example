@@ -7,7 +7,7 @@ export default React.createClass({
   handleSubmit (event) {
     event.preventDefault()
     const itemId = event.target.elements[0].value
-    const path = `/map/${itemId}`
+    const path = `/maps/${itemId}`
     hashHistory.push(path)
   },
 
@@ -22,11 +22,11 @@ export default React.createClass({
       </form>
       <p>Or you can click any of the links below:</p>
       <ul>
-        <li><Link to='/map/ad5759bf407c4554b748356ebe1886e5'>Missing Migrants</Link></li>
-        <li><Link to='/map/71ba2a96c368452bb73d54eadbd59faa'>Refugee Routes</Link></li>
-        <li><Link to='/map/45ded9b3e0e145139cc433b503a8f5ab'>2015 European Sea Arrivals</Link></li>
-        <li><Link to='/map/8e42e164d4174da09f61fe0d3f206641'>Portland Bike Map</Link></li>
-        <li><Link to='/map/ef9c7fbda731474d98647bebb4b33c20'>High Cost Mortgage Loans, 2013</Link></li>
+        <li><Link to='/maps/ad5759bf407c4554b748356ebe1886e5'>Missing Migrants</Link></li>
+        <li><Link to='/maps/71ba2a96c368452bb73d54eadbd59faa'>Refugee Routes</Link></li>
+        <li><Link to='/maps/45ded9b3e0e145139cc433b503a8f5ab'>2015 European Sea Arrivals</Link></li>
+        <li><Link to='/maps/8e42e164d4174da09f61fe0d3f206641'>Portland Bike Map</Link></li>
+        <li><Link to='/maps/ef9c7fbda731474d98647bebb4b33c20'>High Cost Mortgage Loans, 2013</Link></li>
       </ul>
       <p>The source code for this project can be found <a href='https://github.com/tomwayson/esri-react-router-example' target='_blank'>here</a>.</p>
     </div>
