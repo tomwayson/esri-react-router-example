@@ -18,7 +18,9 @@ export default React.createClass({
           </ul>
         </div>
       </nav>
-      { this.props.children }
+      <div className="main">
+        { this.props.children }
+      </div>
     </div>
   }
 })

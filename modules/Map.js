@@ -32,7 +32,7 @@ export default React.createClass({
     // set up the DOM to attach the map to
     return <div>
       <div className='map-title' style={titleStyle}><a href={link}>{title}</a></div>
-      <div ref='map' style={{height: 'calc(100vh - 50px)'}} />
+      <div ref='map' style={{height: 'calc(100vh - 66px)'}} />
       <div className='loading' style={loadingStyle}>Loading...</div>
     </div>
   },
@@ -41,7 +41,7 @@ export default React.createClass({
       // lazy load the arcgis api
       const options = {
         // use a specific version instead of latest 4.x
-        url: '//js.arcgis.com/3.18compact/'
+        url: '//js.arcgis.com/3.18/'
       }
       esriLoader.bootstrap((err) => {
         if (err) {
