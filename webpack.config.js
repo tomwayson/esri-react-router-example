@@ -9,7 +9,8 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' }
+      // NOTE: excluding esri-loader when npm linked
+      { test: /\.js$/, exclude: /(node_modules|esri-loader)/, loader: 'babel-loader?presets[]=es2015&presets[]=react' }
     ]
   }
 }
