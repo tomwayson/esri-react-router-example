@@ -8,6 +8,9 @@ import Home from './modules/Home'
 import Maps from './modules/Maps'
 import Map from './modules/Map'
 
+console.time('initial render')
+console.time('JSAPI load')
+
 render((
   <Router history={hashHistory}>
     <Route path='/' component={App}>
