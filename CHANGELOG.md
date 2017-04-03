@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+
+### Added
+- preload JSAPI once the initial route has rendered
+
+## 0.8.0
+
+### Added
+- search living atlas (only) and use calcite theme
+
 ## 0.7.1
 ### Fixed
 - fix HTTP AGO API calls failing from HTTPS sites (gh-pages)

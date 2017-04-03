@@ -1,7 +1,7 @@
 // modules/Map.js
 import React from 'react'
 import { hashHistory } from 'react-router'
-import * as esriLoader from 'esri-loader'
+import { dojoRequire } from 'esri-loader'
 
 export default React.createClass({
   getInitialState () {
@@ -37,32 +37,19 @@ export default React.createClass({
     </div>
   },
   componentDidMount () {
-    if (!esriLoader.isLoaded()) {
-      // lazy load the arcgis api
-      const options = {
-        // use a specific version instead of latest 4.x
-        url: '//js.arcgis.com/3.18/'
-      }
-      esriLoader.bootstrap((err) => {
-        if (err) {
-          console.error(err)
-        }
-        // now that the arcgis api has loaded, we can create the map
-        this._createMap()
-      }, options)
-    } else {
-      // arcgis api is already loaded, just create the map
-      this._createMap()
-    }
-  },
-  _createMap () {
+    console.log('loading modules')
+    console.time('modules loaded')
     // get item id from route params or use default
     const itemId = this.props.params.itemId || '8e42e164d4174da09f61fe0d3f206641'
     // require the map class
-    esriLoader.dojoRequire(['esri/arcgis/utils'], (arcgisUtils) => {
+    dojoRequire(['esri/arcgis/utils'], (arcgisUtils) => {
+      console.timeEnd('modules loaded')
+      console.log('loading map')
+      console.time('map loaded')
       // create a map at a DOM node in this component
       arcgisUtils.createMap(itemId, this.refs.map)
       .then((response) => {
+        console.timeEnd('map loaded')
         // hide the loading indicator
         // and show the map title
         // NOTE: this will trigger a rerender

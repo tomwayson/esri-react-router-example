@@ -8,6 +8,7 @@ import Home from './modules/Home'
 import Maps from './modules/Maps'
 import Map from './modules/Map'
 
+console.time('initial render')
 render((
   <Router history={hashHistory}>
     <Route path='/' component={App}>
