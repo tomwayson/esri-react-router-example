@@ -34,6 +34,10 @@ componentDidMount () {
   })
 ```
 
+## Why?
+
+See the [esri-loader documentation](https://github.com/tomwayson/esri-loader#why-is-this-needed) for an explanation of why you would use these techniques.
+
 ## Development instructions
 First you'll need [Node.js](https://nodejs.org) and the package manager
 that comes with it: [npm](https://www.npmjs.com/).
