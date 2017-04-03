@@ -6,7 +6,7 @@ import EsriLoaderContainer from './EsriLoaderContainer'
 
 export default React.createClass({
   render () {
-    const options = {
+    const mapOptions = {
       url: 'https://js.arcgis.com/3.20/'
     }
     const currentPathname = this.props.location.pathname
@@ -22,7 +22,7 @@ export default React.createClass({
           </ul>
         </div>
       </nav>
-      <EsriLoaderContainer options={options} />
+      <EsriLoaderContainer options={mapOptions} />
       <div className='main'>
         { this.props.children }
       </div>
