@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, hashHistory } from 'react-router'
-import EsriLoaderContainer from './EsriLoaderContainer'
 
 export default React.createClass({
 
@@ -13,10 +12,6 @@ export default React.createClass({
   },
 
   render () {
-    const options = {
-      url: 'https://js.arcgis.com/3.20/'
-    }
-
     return <div className='container'><p>This is an example of how to use the <a href='https://developers.arcgis.com/javascript/' target='_blank'>ArcGIS API for JavaScript</a> in a <a href='https://github.com/reactjs/react-router-tutorial'>react-router</a> application.</p>
       <h4>Search for maps</h4>
       <p>Search <a href='https://www.arcgis.com/'>ArcGIS Online</a> for maps</p>
@@ -37,7 +32,6 @@ export default React.createClass({
         Notice how fast this page loaded? That's because we haven't loaded the ArcGIS API, nor the map yet.</p>
       <h4>Show me the code</h4>
       <p>The source code for this project is on <a href='https://github.com/tomwayson/esri-react-router-example' target='_blank'>GitHub</a>.</p>
-      <EsriLoaderContainer options={options} />
     </div>
   }
 })

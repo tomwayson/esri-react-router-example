@@ -1,7 +1,6 @@
 /* global fetch */
 import React from 'react'
 import { Link, hashHistory } from 'react-router'
-import EsriLoaderContainer from './EsriLoaderContainer'
 
 export default React.createClass({
   getInitialState () {
@@ -33,9 +32,6 @@ export default React.createClass({
     })
   },
   render () {
-    const options = {
-      url: 'https://js.arcgis.com/3.20/'
-    }
     const listItems = this.state.items.map((item) => {
       const to = '/maps/' + item.id
       const infoUrl = `https://www.arcgis.com/home/item.html?id=${item.id}`
@@ -53,7 +49,6 @@ export default React.createClass({
       </form>
       <p>Showing top 10 web maps</p>
       <ul className='list-results'>{ listItems }</ul>
-      <EsriLoaderContainer options={options} />
     </div>
   },
   componentWillReceiveProps (nextProps) {

@@ -1,8 +1,7 @@
 // modules/Map.js
 import React from 'react'
 import { hashHistory } from 'react-router'
-import * as esriLoader from 'esri-loader'
-import EsriLoaderContainer from './EsriLoaderContainer'
+import { dojoRequire } from 'esri-loader'
 
 export default React.createClass({
   getInitialState () {
@@ -10,9 +9,6 @@ export default React.createClass({
     return { mapLoaded: false }
   },
   render () {
-    const options = {
-      url: 'https://js.arcgis.com/3.20/'
-    }
     // show any map errors
     const error = this.state.error
     if (error) {
@@ -35,7 +31,6 @@ export default React.createClass({
     }
     // set up the DOM to attach the map to
     return <div>
-      <EsriLoaderContainer options={options} />
       <div className='map-title' style={titleStyle}><a href={link}>{title}</a></div>
       <div ref='map' style={{height: 'calc(100vh - 66px)'}} />
       <div className='loading' style={loadingStyle}>Loading...</div>
@@ -47,7 +42,7 @@ export default React.createClass({
     // get item id from route params or use default
     const itemId = this.props.params.itemId || '8e42e164d4174da09f61fe0d3f206641'
     // require the map class
-    esriLoader.dojoRequire(['esri/arcgis/utils'], (arcgisUtils) => {
+    dojoRequire(['esri/arcgis/utils'], (arcgisUtils) => {
       console.timeEnd('modules loaded')
       console.log('loading map')
       console.time('map loaded')
