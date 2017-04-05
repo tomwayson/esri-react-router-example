@@ -2,9 +2,15 @@ import React from 'react'
 // NavLinkItem is a wrapper around react-router's Link component
 // that sets the active class on the <li> around the current nav link
 import NavLinkItem from './NavLinkItem'
-import EsriLoaderContainer from './EsriLoaderContainer'
+import EsriLoader from 'esri-loader-react'
 
 export default React.createClass({
+
+  componentDidMount () {
+    console.log('preloading JSAPI')
+    console.time('JSAPI loaded')
+  },
+
   render () {
     const mapOptions = {
       url: 'https://js.arcgis.com/3.20/'
@@ -22,7 +28,7 @@ export default React.createClass({
           </ul>
         </div>
       </nav>
-      <EsriLoaderContainer options={mapOptions} />
+      <EsriLoader options={mapOptions} ready={() => console.timeEnd('JSAPI loaded')} />
       <div className='main'>
         { this.props.children }
       </div>
