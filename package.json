@@ -13,9 +13,10 @@
   "author": "Tom Wayson <tom@tomwayson.com> (https://tomwayson.com)",
   "license": "Apache-2.0",
   "dependencies": {
-    "esri-loader": "^0.2.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
+    "esri-loader": "^0.3.0",
+    "esri-loader-react": "^0.2.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-router": "^2.0.0",
     "whatwg-fetch": "^2.0.1"
   },
