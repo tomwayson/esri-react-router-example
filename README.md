@@ -1,12 +1,12 @@
 # esri-react-router-example
-Example of how to use [esri-loader](https://github.com/tomwayson/esri-loader) to load the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) in a [react-router](https://github.com/reactjs/react-router-tutorial) application.
+Example of how to use [esri-loader-react] and  [esri-loader] to load the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) in a [react-router](https://github.com/reactjs/react-router-tutorial) application.
 
 [View it live](https://tomwayson.github.io/esri-react-router-example)
 
 ## How it works
-The ArcGIS API is not needed until the user navigates to the `/map` route, but we can preload the script without blocking rendering by including the `<EsriLoaderContainer />` component which [loads the ArcGIS API using `bootstrap()`](/modules/EsriLoaderContainer.js).
+The ArcGIS API is not needed until the user navigates to the `/map` route, but we can preload the script without blocking rendering by including [esri-loader-react]'s `<EsriLoaderContainer />` component.
 
-Once on the map route, the `<Map>` component loads the [esri/arcgis/util](https://developers.arcgis.com/javascript/3/jsapi/esri.arcgis.utils-amd.html) module using `dojoRequire()` and then renders a map:
+Once on the map route, the `<Map>` component loads the [esri/arcgis/util](https://developers.arcgis.com/javascript/3/jsapi/esri.arcgis.utils-amd.html) module using [esri-loader]'s `dojoRequire()` and then renders a map:
 
 ```js
 // modules/Map.js
@@ -50,3 +50,6 @@ npm start
 ```
 
 Now open up [http://localhost:8080](http://localhost:8080)
+
+[esri-loader-react]:https://github.com/davetimmins/esri-loader-react
+[esri-loader]:https://github.com/tomwayson/esri-loader
