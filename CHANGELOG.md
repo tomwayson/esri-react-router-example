@@ -2,10 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## 0.9.0
 
 ### Added
-- preload JSAPI once the initial route has rendered
+- preload JSAPI once the initial route has rendered using esri-loader-react
 
 ## 0.8.0
 
