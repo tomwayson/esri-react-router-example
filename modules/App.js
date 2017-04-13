@@ -4,12 +4,12 @@ import React from 'react'
 import NavLinkItem from './NavLinkItem'
 import EsriLoader from 'esri-loader-react'
 
-export default React.createClass({
-
+export default class extends React.Component {
   componentDidMount () {
+    console.timeEnd('initial render')
     console.log('preloading JSAPI')
     console.time('JSAPI loaded')
-  },
+  }
 
   render () {
     const mapOptions = {
@@ -23,8 +23,8 @@ export default React.createClass({
             <a className='navbar-brand hidden-xs'>Esri React Router Example</a>
           </div>
           <ul className='nav navbar-nav no-collapse' role='nav'>
-            <NavLinkItem to='/' currentPathname={currentPathname}>Home</NavLinkItem>
-            <NavLinkItem to='/maps' currentPathname={currentPathname}>Maps</NavLinkItem>
+            <NavLinkItem to='/' data-current-path={currentPathname}>Home</NavLinkItem>
+            <NavLinkItem to='/maps' data-current-path={currentPathname}>Maps</NavLinkItem>
           </ul>
         </div>
       </nav>
@@ -33,8 +33,5 @@ export default React.createClass({
         { this.props.children }
       </div>
     </div>
-  },
-  componentDidMount () {
-    console.timeEnd('initial render')
   }
-})
+}

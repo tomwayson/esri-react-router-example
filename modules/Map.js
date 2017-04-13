@@ -3,11 +3,12 @@ import React from 'react'
 import { hashHistory } from 'react-router'
 import { dojoRequire } from 'esri-loader'
 
-export default React.createClass({
-  getInitialState () {
-    // set up state to track when the arcgis api gets loaded
-    return { mapLoaded: false }
-  },
+export default class extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { mapLoaded: false }
+  }
+
   render () {
     // show any map errors
     const error = this.state.error
@@ -35,7 +36,8 @@ export default React.createClass({
       <div ref='map' style={{height: 'calc(100vh - 66px)'}} />
       <div className='loading' style={loadingStyle}>Loading...</div>
     </div>
-  },
+  }
+
   componentDidMount () {
     console.log('loading modules')
     console.time('modules loaded')
@@ -65,4 +67,4 @@ export default React.createClass({
       })
     })
   }
-})
+}

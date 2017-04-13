@@ -2,21 +2,24 @@
 import React from 'react'
 import { Link, hashHistory } from 'react-router'
 
-export default React.createClass({
-  getInitialState () {
-    // set up state to track AGO search results
-    return { items: [] }
-  },
+export default class extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { items: [] }
+  }
+
   // search arcgis online for maps
   handleSubmit (event) {
     event.preventDefault()
     const searchTerm = event.target.elements[0].value
     const path = `/maps/?q=${searchTerm}`
     hashHistory.push(path)
-  },
+  }
+
   componentWillMount () {
     this._loadData(this._getQuery(this.props))
-  },
+  }
+
   _loadData (query) {
     const q = query && query.q
     const url = `//www.arcgis.com/sharing/rest/search?num=10&start=0&sortField=avgRating&sortOrder=desc&q=(${q}) (group:"c755678be14e4a0984af36a15f5b643e") type%3A%20%22Web%20Map%22 -type:"Web Mapping Application"&f=json`
@@ -30,7 +33,8 @@ export default React.createClass({
     }).catch((ex) => {
       console.error('AGO query failed', ex)
     })
-  },
+  };
+
   render () {
     const listItems = this.state.items.map((item) => {
       const to = '/maps/' + item.id
@@ -50,7 +54,8 @@ export default React.createClass({
       <p>Showing top 10 web maps</p>
       <ul className='list-results'>{ listItems }</ul>
     </div>
-  },
+  }
+
   componentWillReceiveProps (nextProps) {
     const query = this._getQuery(this.props)
     const nextQuery = this._getQuery(nextProps)
@@ -58,8 +63,9 @@ export default React.createClass({
       // search term was updated, re-run query
       this._loadData(nextQuery)
     }
-  },
+  }
+
   _getQuery (props) {
     return props.location && props.location.query
-  }
-})
+  };
+}
