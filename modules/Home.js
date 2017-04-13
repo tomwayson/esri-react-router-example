@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link, hashHistory } from 'react-router'
 
-export default React.createClass({
-
+export default class extends React.Component {
   // search arcgis online for maps
   handleSubmit (event) {
     event.preventDefault()
     const searchTerm = event.target.elements[0].value
     const path = `/maps/?q=${searchTerm}`
     hashHistory.push(path)
-  },
+  }
 
   render () {
     return <div className='container'><p>This is an example of how to use the <a href='https://developers.arcgis.com/javascript/' target='_blank'>ArcGIS API for JavaScript</a> in a <a href='https://github.com/reactjs/react-router-tutorial'>react-router</a> application.</p>
@@ -34,4 +33,4 @@ export default React.createClass({
       <p>The source code for this project is on <a href='https://github.com/tomwayson/esri-react-router-example' target='_blank'>GitHub</a>.</p>
     </div>
   }
-})
+}
