@@ -36,7 +36,7 @@ componentDidMount () {
 
 ## Why?
 
-See the [esri-loader documentation](https://github.com/tomwayson/esri-loader#why-is-this-needed) for an explanation of why you would use these techniques.
+See the [esri-loader documentation](https://github.com/Esri/esri-loader#why-is-this-needed) for an explanation of why you would use these techniques.
 
 ## Development instructions
 First you'll need [Node.js](https://nodejs.org) and the package manager
@@ -52,4 +52,4 @@ npm start
 Now open up [http://localhost:8080](http://localhost:8080)
 
 [esri-loader-react]:https://github.com/davetimmins/esri-loader-react
-[esri-loader]:https://github.com/tomwayson/esri-loader
+[esri-loader]:https://github.com/Esri/esri-loader
