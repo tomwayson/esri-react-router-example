@@ -1,4 +1,7 @@
 # esri-react-router-example
+
+> This example application has been archived because it is very out of date. See https://github.com/tomwayson/create-arcgis-app/ for a more complete and modern implementation using recent versions of [Create React App](https://facebook.github.io/create-react-app/) and [React Router](https://reacttraining.com/react-router/) as well as [ArcGIS REST JS](https://esri.github.io/arcgis-rest-js/).
+
 Example of how to use [esri-loader-react] and  [esri-loader] to load the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) in a [react-router](https://github.com/reactjs/react-router-tutorial) application.
 
 [View it live](https://tomwayson.github.io/esri-react-router-example)
